@@ -46,7 +46,7 @@ var APP = {
 				while ( javascripts.length ) {
 
 					var object = javascripts.shift(); // important!
-					var script = new Function( "scope", object.source );
+					var script = new Function( object.source );
 					script.bind( window ).call(); // bind and execute.
 					console.log("Library", object.name, "loaded.");
 
@@ -163,7 +163,7 @@ var APP = {
 
 			for (var i in arguments){
 
-				var script = new Function("scope", arguments[ i ]); 
+				var script = new Function( arguments[ i ] ); 
 				script.bind( window ).call(); // bind and execute script.
 				debugMode && console.log("Library", script.toString(), "executed.");
 
